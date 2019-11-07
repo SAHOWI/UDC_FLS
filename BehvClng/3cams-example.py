@@ -1,3 +1,5 @@
+### added crop code
+
 with open(csv_file, 'r') as f:
         reader = csv.reader(f)
         for row in reader:
@@ -17,3 +19,15 @@ with open(csv_file, 'r') as f:
             # add images and angles to data set
             car_images.extend(img_center, img_left, img_right)
             steering_angles.extend(steering_center, steering_left, steering_right)
+
+
+
+
+from keras.models import Sequential, Model
+from keras.layers import Cropping2D
+import cv2
+
+# set up cropping2D layer
+model = Sequential()
+model.add(Cropping2D(cropping=((50,20), (0,0)), input_shape=(160,320,3)))
+...
